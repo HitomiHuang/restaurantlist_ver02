@@ -1,6 +1,6 @@
 # 餐廳清單
 可依名稱或類別來搜尋特定餐廳。
-<img src="./public/images/index_image"><br>
+<img src="./public/images/index_image.png"><br>
 ## 功能
 - 查看所有餐廳
 - 瀏覽餐廳名稱、類別、評分、地址
@@ -10,10 +10,10 @@
 ### 環境設置
 1. 安裝 node.js 與 npm
 2. 將專案 clone 到本地
-  ```bash
-  https://github.com/HitomiHuang/restaurantlist.git
-  ```
-  
+   ```bash
+   https://github.com/HitomiHuang/restaurantlist.git
+   ```
+
 3. 安裝相關套件
    ```bash
    npm install
