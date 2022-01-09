@@ -1,6 +1,6 @@
 # 餐廳清單
 可依名稱或類別來搜尋特定餐廳。
-<img src="./public/images/index_image.png"><br>
+<img src="./public/images/index_image.PNG"><br>
 ## 功能
 - 查看所有餐廳
 - 瀏覽餐廳名稱、類別、評分、地址
