@@ -9,6 +9,9 @@ const restaurantSchema = new Schema({
     type: String,
     required: true
   },
+  rating:{
+    type: String
+  },
   location: {
     type: String,
     required: true

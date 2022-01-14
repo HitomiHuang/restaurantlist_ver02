@@ -15,6 +15,7 @@ db.once('open', () => {
   for (let i = 0; i < rest.length; i++) {  
     Restaurant.create({ name: `${rest[i].name}` ,
        category: `${rest[i].category}` ,
+       rating: `${rest[i].rating}`,
        location: `${rest[i].location}` ,
        google_map: `${rest[i].google_map}` ,
        phone: `${rest[i].phone}` ,
