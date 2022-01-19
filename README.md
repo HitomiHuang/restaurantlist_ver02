@@ -1,7 +1,7 @@
 # 餐廳清單
 可依名稱或類別來搜尋特定餐廳。
 
-<img src="./public/images/A7_CRUD.png"><br>
+<img src="./public/images/A7_CRUD.PNG"><br>
 
 ## 功能
 - 使用者可以新增一家餐廳
