@@ -29,6 +29,7 @@ app.use(express.static('public'))
 app.get('/', (req, res) => {
   Restaurant.find()
   .lean()
+  .sort({ _id: 'asc' })
   .then(restaurants => res.render('index', { restaurants }))
   .catch(error => console.error(error))
 })
@@ -38,14 +39,7 @@ app.get('/restaurants/new', (req, res) => {
 })
 
 app.post('/restaurants', (req, res) => {
-  const name = req.body.name
-  const category = req.body.category
-  const rating = req.body.rating
-  const location = req.body.location
-  const google_map = req.body.google_map
-  const phone = req.body.phone
-  const description = req.body.description
-  const image = req.body.image
+  const { name, category, rating, location, google_map, phone, description, image }= req.body
   return Restaurant.create(
     {name,
     category,
@@ -86,14 +80,7 @@ app.get('/restaurants/:id/edit', (req, res) => {
 
 app.post('/restaurants/:id/edit', (req, res) => {
   const id = req.params.id
-  const name = req.body.name
-  const category = req.body.category
-  const rating = req.body.rating
-  const location = req.body.location
-  const google_map = req.body.google_map
-  const phone = req.body.phone
-  const description = req.body.description
-  const image = req.body.image
+  const { name, category, rating, location, google_map, phone, description, image } = req.body
   return Restaurant.findById(id)
     .then(restaurant => {
       restaurant.name = name
@@ -107,6 +94,14 @@ app.post('/restaurants/:id/edit', (req, res) => {
       return restaurant.save()
     })
     .then(() => res.redirect(`/restaurants/${id}`))
+    .catch(error => console.log(error))
+})
+
+app.post('/restaurants/:id/delete', (req, res) => {
+  const id = req.params.id
+  return Restaurant.findById(id)
+    .then(restaurant => restaurant.remove())
+    .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
 

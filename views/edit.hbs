@@ -1,12 +1,45 @@
 <form action="/restaurants/{{ restaurant._id }}/edit" method="POST">
-  <input type="text" placeholder="name" name="name" value = "{{restaurant.name}}">
-  <input type="text" placeholder="category" name="category" value = "{{restaurant.category}}">
-  <input type="text" placeholder="rating" name="rating" value = "{{restaurant.rating}}">
-  <input type="text" placeholder="location" name="location" value = "{{restaurant.location}}">
-  <input type="text" placeholder="google_map" name="google_map" value = "{{restaurant.google_map}}">
-  <input type="text" placeholder="phone" name="phone" value = "{{restaurant.phone}}">
-  <input type="text" placeholder="description" name="description" value = "{{restaurant.description}}">
-  <input type="text" placeholder="image" name="image" value = "{{restaurant.image}}">
-  <button type="submit">Save</button>
-  <a href="/">Back</a>
+  <div class="container search-bar">
+    <div class="search-bar-outer">
+      <div class="row  mx-auto " style="max-width:800px; ">
+        <div class="col-6 mb-3">
+          <label for="name" class="form-label">餐廳名稱</label>
+          <input type="text" placeholder="餐廳名稱..." name="name" id="name" class="form-control" value = "{{restaurant.name}}" required>
+        </div>
+        <div class="col-4 mb-3">
+          <label for="category" class="form-label">類別</label>
+          <input type="text" placeholder="類別..." name="category" id="category" class="form-control" value = "{{restaurant.category}}">
+        </div>
+        <div class="col-2 mb-3">
+          <label for="rating" class="form-label">評價</label>
+          <input type="number" placeholder="評價..." name="rating" id="rating" class="form-control" value = "{{restaurant.rating}}" max="5" min="0" step="0.1">
+        </div>
+        <div class="col-12 mb-3">
+          <label for="location" class="form-label">地址</label>
+          <input type="text" placeholder="地址..." name="location" id="location" class="form-control" value = "{{restaurant.location}}" required>
+        </div>
+        <div class="col-md-8 mb-3">
+          <label for="google_map" class="form-label">Google位置</label>
+          <input type="text" placeholder="Google位置..." name="google_map" id="google_map" class="form-control" value = "{{restaurant.google_map}}">
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="phone" class="form-label">電話</label>
+          <input type="tel" placeholder="電話..." name="phone" id="phone" class="form-control"  value = "{{restaurant.phone}}" pattern="[0-9]{2}-[0-9]{4}-[0-9]{4}" required>
+        </div>
+        <div class="col-12 mb-3">
+          <label for="description" class="form-label">描述</label>
+          <textarea placeholder="描述..." name="description" id="description" class="form-control" rows="3">{{restaurant.description}}</textarea>
+        </div>
+        <div class="col-12 mb-3">
+          <label for="image" class="form-label">圖片</label>
+          <input type="text" placeholder="圖片..." name="image" id="image" class="form-control" value = "{{restaurant.image}}">
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center mt-4 mb-3">
+      <button type="submit" class="btn btn-primary mx-2">Save</button>
+      <a href="/restaurants/{{ restaurant._id }}" class="btn btn-link">Back</a>
+    </div>
+  </div>
 </form>
+
