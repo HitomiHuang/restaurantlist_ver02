@@ -1,14 +1,8 @@
-const mongoose = require('mongoose')
-const Restaurant = require('../restaurant')
+const db = require('../../config/mongoose')
+const Restaurant = require('../../models/restaurant')
 const restaurantList = require('../../restaurant.json')
 const rest = restaurantList.results
 
-
-mongoose.connect('mongodb://localhost/restaurant-list')
-const db = mongoose.connection
-db.on('error', () => {
-  console.log('mongo error!')
-})
 db.once('open', () => {
   console.log('mongo connected!')
 
