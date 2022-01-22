@@ -1,7 +1,7 @@
 # 餐廳清單
 可依名稱或類別來搜尋特定餐廳。
 
-<img src="./public/images/A7_CRUD.PNG"><br>
+<img src="./public/images/A8_Routes.PNG"><br>
 
 ## 功能
 - 使用者可以新增一家餐廳
@@ -9,6 +9,7 @@
 - 使用者可以瀏覽全部所有餐廳
 - 使用者可以修改一家餐廳的資訊
 - 使用者可以刪除一家餐廳
+- 使用者可以依類型排序餐廳
 
 ### 環境設置
 1. 安裝 node.js 與 npm
@@ -40,3 +41,4 @@
 - Express-Handlebars 3.0.0
 - Bootstrap 4.3.1
 - Font-awesome 5.8.1
+- Handlebars 4.7.7
