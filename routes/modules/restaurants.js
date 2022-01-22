@@ -32,21 +32,7 @@ router.get('/:id', (req, res) => {
     .catch(error => console.log(error))
 })
 
-router.get('/search', (req, res) => {
-  if (!req.query.keyword) {
-    return res.redirect('/')
-  }
-  const keyword = req.query.keyword
-  const lowerKeyword = keyword.trim().toLowerCase()
 
-  Restaurant.find({})
-    .lean()
-    .then(restaurants => {
-      const filterRestaurants = restaurants.filter(item => item.name.toLowerCase().includes(lowerKeyword) || item.category.includes(lowerKeyword))
-      res.render('index', { restaurants: filterRestaurants, keyword })
-    })
-    .catch(error => console.log(error))
-})
 
 router.get('/:id/edit', (req, res) => {
   const id = req.params.id
