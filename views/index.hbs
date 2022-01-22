@@ -18,11 +18,11 @@
       <form action="/search">
         <select class="form-select" id="inputGroupSelect01" name="sort" style="height:38px; font-size: 0.8rem;"
           onchange="this.form.submit()">
-          <option selected hidden>排序方式</option>
-          <option value="asc">A -> Z</option>
-          <option value="desc">Z -> A</option>
-          <option value="category">類別</option>
-          <option value="location">地區</option>
+          <option value="0">排序方式</option>
+          <option value="asc" {{#ifSelected sortValue "asc" }}selected{{/ifSelected}}>A -> Z</option>
+          <option value="desc" {{#ifSelected sortValue "desc" }}selected{{/ifSelected}}>Z -> A</option>
+          <option value="category" {{#ifSelected sortValue "category" }}selected{{/ifSelected}}>類別</option>
+          <option value="location" {{#ifSelected sortValue "location" }}selected{{/ifSelected}}>地區</option>
         </select>
       </form>
 

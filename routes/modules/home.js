@@ -32,6 +32,9 @@ router.get('/search', (req, res) => {
   if(sortValue){
     let sortObject
     switch (sortValue)  {
+      case 'asc':
+        sortObject = { name: 'asc' }
+        break;
       case 'desc':
         sortObject = { name: 'desc' }
         break;
@@ -42,12 +45,12 @@ router.get('/search', (req, res) => {
         sortObject = { location: 'asc'}
         break;
       default:
-        sortObject = { name: 'asc' }
+        sortObject = { _id: 'asc' }
     }
     Restaurant.find()
       .lean()
       .sort(sortObject)
-      .then(restaurants => res.render('index', { restaurants }))
+      .then(restaurants => res.render('index', { restaurants, sortValue }))
       .catch(error => console.error(error))
   }
 })
