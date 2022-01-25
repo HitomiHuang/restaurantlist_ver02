@@ -15,8 +15,14 @@ db.once('open', () => {
        phone: `${rest[i].phone}` ,
        description: `${rest[i].description}` ,
        image: `${rest[i].image}` })
+       .then(() => {
+         console.log('restaurantSeeder done')
+         db.close()
+       })
+       .catch(errpr => console.log(error))
+       .finally(() => process.exit())
   }
-  console.log('done')
+  
 
 })
 
