@@ -3,7 +3,8 @@ const router = express.Router()
 const Restaurant = require('../../models/restaurant')
 
 router.get('/new', (req, res) => {
-  return res.render('new')
+  return res.render('errorPage', { error: error.message })
+  // return res.render('new')
 })
 
 router.get('/:id', (req, res) => {

@@ -3,91 +3,17 @@ const router = express.Router()
 const Restaurant = require('../../models/restaurant')
 
 router.get('/', (req, res) => {
-  // const keyword = req.query.keyword
-  // const lowerKeyword = keyword ? keyword.trim().toLowerCase() : null
-  // const sortValue = req.query.sort
-
-  // if ((!lowerKeyword) && !sortValue) {
-  //   res.redirect('/')
-  // }
-
-  Restaurant.find()
-    .lean()
-    .sort({ _id: 'asc' })
-    .then( restaurants => res.render('index', { restaurants }))
-    .catch(error => {
-      console.log(error)
-      res.render('errorPage', { error: error.message })
-    })
-  
-  // if (keyword) {
-  //   Restaurant.find({})
-  //     .lean()
-  //     .then(restaurants => {
-  //       const filterRestaurants = restaurants.filter(item => item.name.toLowerCase().includes(lowerKeyword) || item.category.toLowerCase().includes(lowerKeyword))
-  //       res.render('index', { restaurants: filterRestaurants, keyword })
-  //     })
-  //     .catch(error => {
-  //       console.log(error)
-  //       res.render('errorPage', { error: error.message })
-  //     })
-  // }
-
-  // if (sortValue) {
-  //   let sortObject
-  //   switch (sortValue) {
-  //     case 'asc':
-  //       sortObject = { name: 'asc' }
-  //       break;
-  //     case 'desc':
-  //       sortObject = { name: 'desc' }
-  //       break;
-  //     case 'category':
-  //       sortObject = { category: 'asc' }
-  //       break;
-  //     case 'location':
-  //       sortObject = { location: 'asc' }
-  //       break;
-  //     default:
-  //       sortObject = { _id: 'asc' }
-  //   }
-  //   Restaurant.find()
-  //     .lean()
-  //     .sort(sortObject)
-  //     .then(restaurants => res.render('index', { restaurants, sortValue }))
-  //     .catch(error => {
-  //       console.log(error)
-  //       res.render('errorPage', { error: error.message })
-  //     })
-  // }
-
-})
-
-router.get('/search', (req, res) => {
   const keyword = req.query.keyword
   const lowerKeyword = keyword ? keyword.trim().toLowerCase() : null
   const sortValue = req.query.sort
-  
-  if ((!lowerKeyword) && !sortValue) {
-    res.redirect('/')
-  }
-  
-  if(keyword){
-  Restaurant.find({})
-  .lean()
-  .then(restaurants => {
-    const filterRestaurants = restaurants.filter(item => item.name.toLowerCase().includes(lowerKeyword) || item.category.toLowerCase.includes(lowerKeyword))
-    res.render('index', { restaurants: filterRestaurants, keyword })
-  })
-  .catch(error => {
-      console.log(error)
-      res.render('errorPage', { error: error.message })
-  })
-  }
 
-  if(sortValue){
-    let sortObject
-    switch (sortValue)  {
+
+
+  let keywordObject
+  let sortObject
+  
+  if (sortValue) { 
+    switch (sortValue) {
       case 'asc':
         sortObject = { name: 'asc' }
         break;
@@ -95,23 +21,32 @@ router.get('/search', (req, res) => {
         sortObject = { name: 'desc' }
         break;
       case 'category':
-        sortObject = { category: 'asc'}
-        break; 
+        sortObject = { category: 'asc' }
+        break;
       case 'location':
-        sortObject = { location: 'asc'}
+        sortObject = { location: 'asc' }
         break;
       default:
         sortObject = { _id: 'asc' }
     }
-    Restaurant.find()
-      .lean()
-      .sort(sortObject)
-      .then(restaurants => res.render('index', { restaurants, sortValue }))
-      .catch(error => {
-        console.log(error)
-        res.render('errorPage', { error: error.message })
-      })
   }
+
+  Restaurant.find()
+    .lean()
+    .sort(sortObject)
+    .then(restaurants => {  
+      if (keyword) {
+        const filterRestaurants = restaurants.filter(item => item.name.toLowerCase().includes(lowerKeyword) ||
+          item.category.toLowerCase().includes(lowerKeyword))
+        keywordObject = { restaurants: filterRestaurants, sortValue, keyword }
+      } else {
+        keywordObject = { restaurants, sortValue, keyword }
+      }  
+      res.render('index', keywordObject)})
+    .catch(error => {
+      console.log(error)
+      res.render('errorPage', { error: error.message })
+    })    
 })
 
 module.exports = router
