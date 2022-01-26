@@ -78,7 +78,7 @@ router.delete('/:id', (req, res) => {
     .then(() => res.redirect('/'))
     .catch(error => {
       console.log(error)
-      res.render('errorPage', { error: error.message })
+      res.redirect('/error')
     })
 })
 
