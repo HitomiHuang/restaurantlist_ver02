@@ -4,10 +4,12 @@ const Restaurant = require('../../models/restaurant')
 
 router.get('/', (req, res) => {
   const keyword = req.query.keyword
-  const lowerKeyword = keyword ? keyword.trim().toLowerCase() : null
+  const lowerKeyword = keyword !== undefined ? keyword.trim().toLowerCase() : null
   const sortValue = req.query.sort
 
-
+  if((lowerKeyword === '') && !sortValue) {
+    return res.redirect('/')
+  }
 
   let keywordObject
   let sortObject
@@ -40,13 +42,18 @@ router.get('/', (req, res) => {
           item.category.toLowerCase().includes(lowerKeyword))
         keywordObject = { restaurants: filterRestaurants, sortValue, keyword }
       } else {
+        
         keywordObject = { restaurants, sortValue, keyword }
       }  
       res.render('index', keywordObject)})
     .catch(error => {
       console.log(error)
-      res.render('errorPage', { error: error.message })
+      res.redirect('/error')
     })    
+})
+
+router.get('/error', (req, res) => {
+  res.send("Custom error landing page.")
 })
 
 module.exports = router

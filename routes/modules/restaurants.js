@@ -3,8 +3,7 @@ const router = express.Router()
 const Restaurant = require('../../models/restaurant')
 
 router.get('/new', (req, res) => {
-  return res.render('errorPage', { error: error.message })
-  // return res.render('new')
+  return res.render('new')
 })
 
 router.get('/:id', (req, res) => {
@@ -14,7 +13,7 @@ router.get('/:id', (req, res) => {
     .then((restaurant) => res.render('show', { restaurant }))
     .catch(error => {
       console.log(error)
-      res.render('errorPage', { error: error.message})
+      res.redirect('/error')
     })
 })
 
@@ -25,7 +24,7 @@ router.get('/:id/edit', (req, res) => {
     .then((restaurant) => res.render('edit', { restaurant }))
     .catch(error => {
       console.log(error)
-      res.render('errorPage', { error: error.message })
+      res.redirect('/error')
     })
 })
 
@@ -46,7 +45,7 @@ router.post('/', (req, res) => {
     .then(() => res.redirect('/'))
     .catch(error => {
       console.log(error)
-      res.render('errorPage', { error: error.message })
+      res.redirect('/error')
     })
 })
 
@@ -68,7 +67,7 @@ router.put('/:id', (req, res) => {
     .then(() => res.redirect(`/restaurants/${id}`))
     .catch(error => {
       console.log(error)
-      res.render('errorPage', { error: error.message })
+      res.redirect('/error')
     })
 })
 
