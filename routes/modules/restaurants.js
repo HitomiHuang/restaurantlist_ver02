@@ -13,7 +13,7 @@ router.get('/:id', (req, res) => {
     .then((restaurant) => res.render('show', { restaurant }))
     .catch(error => {
       console.log(error)
-      res.redirect('/error')
+      res.render('errorPage', { error: error.message })
     })
 })
 
@@ -24,7 +24,7 @@ router.get('/:id/edit', (req, res) => {
     .then((restaurant) => res.render('edit', { restaurant }))
     .catch(error => {
       console.log(error)
-      res.redirect('/error')
+      res.render('errorPage', { error: error.message })
     })
 })
 
@@ -45,7 +45,7 @@ router.post('/', (req, res) => {
     .then(() => res.redirect('/'))
     .catch(error => {
       console.log(error)
-      res.redirect('/error')
+      res.render('errorPage', { error: error.message })
     })
 })
 
@@ -67,7 +67,7 @@ router.put('/:id', (req, res) => {
     .then(() => res.redirect(`/restaurants/${id}`))
     .catch(error => {
       console.log(error)
-      res.redirect('/error')
+      res.render('errorPage', { error: error.message })
     })
 })
 
@@ -78,7 +78,7 @@ router.delete('/:id', (req, res) => {
     .then(() => res.redirect('/'))
     .catch(error => {
       console.log(error)
-      res.redirect('/error')
+      res.render('errorPage', { error: error.message })
     })
 })
 

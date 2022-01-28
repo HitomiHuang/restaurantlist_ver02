@@ -48,12 +48,9 @@ router.get('/', (req, res) => {
       res.render('index', keywordObject)})
     .catch(error => {
       console.log(error)
-      res.redirect('/error')
+      res.render('errorPage', { error: error.message })
     })    
 })
 
-router.get('/error', (req, res) => {
-  res.send("Custom error landing page.")
-})
 
 module.exports = router
