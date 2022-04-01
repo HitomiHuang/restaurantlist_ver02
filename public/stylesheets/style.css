@@ -81,6 +81,21 @@ header {
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
+.form-frame{
+  position: absolute;
+  width:100%;
+  top:150px;
+  margin:0 auto;
+
+}
+
+.form-login{
+  margin: 0 auto;
+  max-width: 467.5px;
+}
+
+
+
 @media screen and (max-width: 992px) {
   
   .card img{
