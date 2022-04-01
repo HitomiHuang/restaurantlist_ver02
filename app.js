@@ -1,4 +1,5 @@
 const express = require('express')
+const session = require('express-session')
 const app = express()
 const port = 3000
 
@@ -12,6 +13,12 @@ app.engine('hbs', exphbs.engine({defaultLayout: 'main', extname: 'hbs'}))
 
 
 app.set('view engine', 'hbs')
+
+app.use(session({
+  secret: 'ThisIsMySecret',
+  resave: false,
+  saveUninitialized: true
+}))
 app.use(express.urlencoded({ extended:true }))
 
 app.use(express.static('public'))
