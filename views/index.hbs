@@ -4,6 +4,7 @@
     <div class="search-bar-inner col-8">
       <form action="/">
         <h4 class="mb-2">尋找餐廳：</h4>
+        
         <div class="input-group">
           <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" aria-label="Restaurant Name..."
             value="{{ keyword }}" aria-describedby="search-button">
@@ -29,7 +30,9 @@
     </div>
   </div>
 </div <!--create button-->
-
+<div class="container create-btn">
+  <a href="/restaurants/new" class="btn btn-outline-primary">Create</a>
+</div>
 <!-- restaurant list -->
 <div class="container mt-5">
   <div class="row">

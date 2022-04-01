@@ -6,6 +6,7 @@ router.get('/', (req, res) => {
   const keyword = req.query.keyword
   const lowerKeyword = keyword !== undefined ? keyword.trim().toLowerCase() : null
   const sortValue = req.query.sort
+  const userId = req.user._id
 
   if((lowerKeyword === '') && !sortValue) {
     return res.redirect('/')
@@ -33,7 +34,7 @@ router.get('/', (req, res) => {
     }
   }
 
-  Restaurant.find()
+  Restaurant.find({ userId })
     .lean()
     .sort(sortObject)
     .then(restaurants => {  
@@ -48,7 +49,7 @@ router.get('/', (req, res) => {
       res.render('index', keywordObject)})
     .catch(error => {
       console.log(error)
-      res.render('errorPage', { error: error.message })
+      res.render('errorPage', { error })
     })    
 })
 
