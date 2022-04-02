@@ -1,5 +1,5 @@
 # 餐廳清單
-可依名稱或類別來搜尋特定餐廳。
+可以建立專屬自己的餐廳清單。
 
 <img src="./public/images/3_A1.png"><br>
 
@@ -11,14 +11,14 @@
 ### 環境設置
 1. 安裝 node.js 與 npm
 2. 將專案 clone 到本地
-   ```bash
+```
   https://github.com/HitomiHuang/restaurantlist_ver02.git
-   ```
+```
 
 3. 安裝相關套件
-   ```bash
+```
    npm install
-   ```
+```
 
 4. 安裝完畢，輸入以下指令，運行專案
    ```bash
