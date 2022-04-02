@@ -12,6 +12,9 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
+  restaurant: {
+
+  },
   createdAt:{
     type: Date,
     default: Date.now

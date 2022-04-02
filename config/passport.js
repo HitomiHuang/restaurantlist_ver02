@@ -9,11 +9,7 @@ module.exports = app => {
   app.use(passport.session())
 
   passport.use(new LocalStrategy({ usernameField: 'email', passReqToCallback: true }, (req, email, password, done) => {
-    // if (!email || !password) {
-    //   return done(null, false, req.flash('error_msg', '請輸入Email及密碼。'))
-    // }
-    console.log(email);
-    console.log(password)
+
 
     User.findOne({ email })
       .then(user => {
@@ -29,7 +25,7 @@ module.exports = app => {
           })
           .catch(error => done(error, false))
       })
-    
+
   }))
 
   passport.use(new FacebookStrategy({
