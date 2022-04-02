@@ -12,8 +12,17 @@ router.get('/login', (req, res) => {
 
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/',
+  failureFlash: true,
   failureRedirect: '/users/login'
-}))
+  
+}), (req, res) => {
+  console.log(req)
+  // const { email, password } = req.body
+  // console.log()
+  // if (!email || !password) {
+  //   req.flash('error_msg', '請輸入Email及密碼。')
+  // }
+})
 
 router.get('/register', (req, res) => {
   res.render('register')
