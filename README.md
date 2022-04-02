@@ -11,14 +11,14 @@
 ### 環境設置
 1. 安裝 node.js 與 npm
 2. 將專案 clone 到本地
-```
-  https://github.com/HitomiHuang/restaurantlist_ver02.git
-```
+   ```
+   https://github.com/HitomiHuang/restaurantlist_ver02.git
+   ```
 
 3. 安裝相關套件
-```
-   npm install
-```
+   ```
+      npm install
+   ```
 
 4. 安裝完畢，輸入以下指令，運行專案
    ```bash
